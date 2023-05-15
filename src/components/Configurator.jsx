@@ -10,15 +10,32 @@ const Configurator = () => {
         cakeColors,
         cakeColor,
         setCakeColor,
-        cushionColors,
-        cushionColor,
-        setCushionColor,
+        creamColors,
+        creamColor,
+        setCreamColor,
     } = useCustomization();
 
     return (
         <div className="configurator">
             <div className="configurator__section">
-                <div className="configurator__section__title">Chair material</div>
+                <div className="configurator__section__title">Form</div>
+                <div className="configurator__section__values">
+                    <div
+                        className={`item ${form === 1 ? "item--active" : ""}`}
+                        onClick={() => setForm(1)}
+                    >
+                        <div className="item__label">Round</div>
+                    </div>
+                    <div
+                        className={`item ${form === 2 ? "item--active" : ""}`}
+                        onClick={() => setForm(2)}
+                    >
+                        <div className="item__label">Heart</div>
+                    </div>
+                </div>
+            </div>
+            <div className="configurator__section">
+                <div className="configurator__section__title">Cake material</div>
                 <div className="configurator__section__values">
                     {materials.map((item) => (
                             <div
@@ -51,16 +68,16 @@ const Configurator = () => {
                     ))}
                 </div>
             </div>
-            <div className="configurator__section">
-                <div className="configurator__section__title">Cushion color</div>
+            <div className="configurator__section" hidden={form === 1}>
+                <div className="configurator__section__title">Cream color</div>
                 <div className="configurator__section__values">
-                    {cushionColors.map((item, index) => (
+                    {creamColors.map((item, index) => (
                         <div
                             key={index}
                             className={`item ${
-                                item.color === cushionColor.color ? "item--active" : ""
+                                item.color === creamColor.color ? "item--active" : ""
                             }`}
-                            onClick={() => setCushionColor(item)}
+                            onClick={() => setCreamColor(item)}
                         >
                             <div
                                 className="item__dot"
@@ -69,23 +86,6 @@ const Configurator = () => {
                             <div className="item__label">{item.name}</div>
                         </div>
                     ))}
-                </div>
-            </div>
-            <div className="configurator__section">
-                <div className="configurator__section__title">Form</div>
-                <div className="configurator__section__values">
-                    <div
-                        className={`item ${form === 1 ? "item--active" : ""}`}
-                        onClick={() => setForm(1)}
-                    >
-                        <div className="item__label">Round</div>
-                    </div>
-                    <div
-                        className={`item ${form === 2 ? "item--active" : ""}`}
-                        onClick={() => setForm(2)}
-                    >
-                        <div className="item__label">Heart</div>
-                    </div>
                 </div>
             </div>
         </div>

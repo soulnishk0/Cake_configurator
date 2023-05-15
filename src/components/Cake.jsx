@@ -40,7 +40,7 @@ export function Cake(props) {
     });
 
     const abstractTextureProps = useTexture({
-        // map: "./textures/abstract/Abstract_Organic_006_basecolor.jpg",
+        map: "./textures/abstract/Abstract_Organic_006_basecolor.jpg",
         normalMap: "./textures/abstract/Abstract_Organic_006_normal.jpg",
         roughnessMap: "./textures/abstract/Abstract_Organic_006_roughness.jpg",
         aoMap: "./textures/abstract/Abstract_Organic_006_ambientOcclusion.jpg",
@@ -82,6 +82,7 @@ export function Cake(props) {
         'lava': lavaTextureProps
     }
 
+    nodes.cream.material.color = new Color(creamColor.color)
     return (
         <group {...props} dispose={null}>
             <group rotation={[Math.PI / 2, 0, 0]} scale={0.07}>

@@ -1,6 +1,4 @@
-import { createContext, useContext, useState } from "react";
-import {useTexture} from "@react-three/drei";
-import * as THREE from "three";
+import {createContext, useContext, useState} from "react";
 
 const cakeColors = [
   {
@@ -37,7 +35,7 @@ const cakeColors = [
   },
 ];
 
-const cushionColors = [
+const creamColors = [
   // {
   //   color: "#683434",
   //   name: "brown",
@@ -46,18 +44,18 @@ const cushionColors = [
   //   color: "#1a5e1a",
   //   name: "green",
   // },
-  // {
-  //   color: "#659994",
-  //   name: "blue",
-  // },
+  {
+    color: "#659994",
+    name: "blue",
+  },
   // {
   //   color: "#896599",
   //   name: "mauve",
   // },
-  // {
-  //   color: "#ffa500",
-  //   name: "orange",
-  // },
+  {
+    color: "#ff6a00",
+    name: "orange",
+  },
   // {
   //   color: "#59555b",
   //   name: "grey",
@@ -88,7 +86,7 @@ export const CustomizationProvider = (props) => {
   const [material, setMaterial] = useState(materials[0]);
   const [form, setForm] = useState(1);
   const [cakeColor, setCakeColor] = useState(cakeColors[0]);
-  const [cushionColor, setCushionColor] = useState(cushionColors[0]);
+  const [creamColor, setCreamColor] = useState(creamColors[0]);
 
   return (
     <CustomizationContext.Provider
@@ -101,9 +99,9 @@ export const CustomizationProvider = (props) => {
         cakeColors,
         cakeColor,
         setCakeColor,
-        cushionColors,
-        cushionColor,
-        setCushionColor,
+        creamColors,
+        creamColor,
+        setCreamColor,
       }}
     >
       {props.children}
@@ -112,6 +110,5 @@ export const CustomizationProvider = (props) => {
 };
 
 export const useCustomization = () => {
-  const context = useContext(CustomizationContext);
-  return context;
+  return useContext(CustomizationContext);
 };
