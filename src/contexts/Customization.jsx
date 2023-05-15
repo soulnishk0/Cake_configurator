@@ -85,6 +85,10 @@ const CustomizationContext = createContext({});
 export const CustomizationProvider = (props) => {
   const [material, setMaterial] = useState(materials[0]);
   const [form, setForm] = useState(1);
+  const [candle, setCandle] = useState(false);
+  const [chocolate, setChocolate] = useState(false);
+  const [balls, setBalls] = useState(false);
+  const [nuts, setNuts] = useState(false);
   const [cakeColor, setCakeColor] = useState(cakeColors[0]);
   const [creamColor, setCreamColor] = useState(creamColors[0]);
 
@@ -102,6 +106,15 @@ export const CustomizationProvider = (props) => {
         creamColors,
         creamColor,
         setCreamColor,
+        setCandle,
+        candle,
+        setBalls,
+        balls,
+        setChocolate,
+        chocolate,
+        setNuts,
+        nuts
+
       }}
     >
       {props.children}

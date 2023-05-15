@@ -13,6 +13,14 @@ const Configurator = () => {
         creamColors,
         creamColor,
         setCreamColor,
+        setCandle,
+        candle,
+        setBalls,
+        balls,
+        setChocolate,
+        chocolate,
+        setNuts,
+        nuts
     } = useCustomization();
 
     return (
@@ -86,6 +94,44 @@ const Configurator = () => {
                             <div className="item__label">{item.name}</div>
                         </div>
                     ))}
+                </div>
+            </div>
+            <div className="configurator__section">
+                <div className="configurator__section__title">Decorations</div>
+                <div className="configurator__section__values">
+                    <div className="item">
+                    <label className="checkBox">
+                    <input id="ch_nuts" type="checkbox"
+                           onChange={(event) => setNuts(event.target['checked'])}/>
+                        <div className="transition"></div>
+                    </label>
+                        <div className="item__label">Nuts</div>
+                    </div>
+                    <div className="item">
+                        <label className="checkBox">
+                            <input id="ch_chocolate" type="checkbox"
+                                   onChange={(event) => setChocolate(event.target['checked'])}/>
+                            <div className="transition"></div>
+                        </label>
+                        <div className="item__label">Chocolate</div>
+                    </div>
+                    <div className="item">
+                        <label className="checkBox">
+                            <input id="ch_balls" type="checkbox"
+                                   onChange={(event) => setBalls(event.target['checked'])}/>
+                            <div className="transition"></div>
+                        </label>
+                        <div className="item__label">Balls</div>
+                    </div>
+                    <div className="item">
+                        <label className="checkBox">
+                            <input id="ch_candle" type="checkbox"
+                                   onChange={(event) => setCandle(event.target['checked'])}/>
+                            <div className="transition"></div>
+                        </label>
+                        <div className="item__label">Candle</div>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@ import Chair from "./Chair.jsx";
 
 export function Cake(props) {
     const {nodes, materials} = useGLTF('public/models/cake.gltf')
-    const { material, form, cakeColor, creamColor } = useCustomization();
-    const stand_color = new Color('#c41313');
+    const { material, form, cakeColor, creamColor, nuts, chocolate, balls, candle } = useCustomization();
+    const stand_color = new Color('#2a2424');
     nodes.Mesh004.material.color = stand_color
     nodes.Mesh004_1.material.color = stand_color
     nodes.Mesh004_2.material.color = stand_color
@@ -110,15 +110,15 @@ export function Cake(props) {
             <mesh geometry={nodes.cream.geometry} material={materials.Cream} position={[0, 1.41, 0]}
                   rotation={[1.57, 0, 0]} scale={0.1} visible={form===2} castShadow/>
             <mesh geometry={nodes.chandel.geometry} material={materials.chandel} position={[0, 2.33, 0]}
-                  rotation={[-Math.PI / 2, 0, 0]} scale={-0.03}/>
-            <group position={[0.08, 2.31, 0.42]} rotation={[Math.PI / 2, 0, -2.81]} scale={0.18}>
+                  rotation={[-Math.PI / 2, 0, 0]} scale={-0.03} visible={candle}/>
+            <group position={[0.08, 2.31, 0.42]} rotation={[Math.PI / 2, 0, -2.81]} scale={0.18} visible={nuts}>
                 <mesh geometry={nodes.Mesh021.geometry} material={materials.Default}/>
                 <mesh geometry={nodes.Mesh021_1.geometry} material={materials.Default}/>
             </group>
             <mesh geometry={nodes.bar.geometry} material={materials.choco} position={[0, 2.5, 0]}
-                  rotation={[2.87, -0.55, -2.38]} scale={0.1}/>
+                  rotation={[2.87, -0.55, -2.38]} scale={0.1} visible={chocolate}/>
             <mesh geometry={nodes.balls.geometry} material={materials.balls} position={[0.27, 2.44, -0.05]}
-                  rotation={[-2.24, 0.35, -0.42]} scale={-0.06}/>
+                  rotation={[-2.24, 0.35, -0.42]} scale={-0.06} visible={balls}/>
         </group>
     )
 }
