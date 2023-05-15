@@ -7,9 +7,11 @@ import React, {useRef} from 'react'
 import {useGLTF, useTexture} from '@react-three/drei'
 import {useCustomization} from "../contexts/Customization.jsx";
 import {Color} from "three";
+import * as THREE from "three";
+import Chair from "./Chair.jsx";
 
 export function Cake(props) {
-    const {nodes, materials} = useGLTF('/cake.gltf')
+    const {nodes, materials} = useGLTF('public/models/cake.gltf')
     const { material, form, cakeColor, creamColor } = useCustomization();
     const stand_color = new Color('#c41313');
     nodes.Mesh004.material.color = stand_color
@@ -17,34 +19,95 @@ export function Cake(props) {
     nodes.Mesh004_2.material.color = stand_color
     nodes.Mesh004_3.material.color = stand_color
 
-    const leatherTextureProps = useTexture({
-        // map: "./textures/leather/Leather_008_Base Color.jpg",
-        normalMap: "./textures/leather/Leather_008_Normal.jpg",
-        roughnessMap: "./textures/leather/Leather_008_Roughness.jpg",
-        aoMap: "./textures/leather/Leather_008_Ambient Occlusion.jpg",
+    const candyTextureProps = useTexture({
+        map: "./textures/candy/Candy_basecolor.jpg",
+        normalMap: "./textures/candy/Candy_normal.jpg",
+        roughnessMap: "./textures/candy/Candy_roughness.jpg",
+        aoMap: "./textures/candy/Candy_ambientOcclusion.jpg",
     });
+    const stylizedFurTextureProps = useTexture({
+        map: "./textures/stylized_fur/Stylized_Fur_002_basecolor.jpg",
+        normalMap: "./textures/stylized_fur/Stylized_Fur_002_normal.jpg",
+        roughnessMap: "./textures/stylized_fur/Stylized_Fur_002_roughness.jpg",
+        aoMap: "./textures/stylized_fur/Stylized_Fur_002_ambientOcclusion.jpg",
+    });
+
+    const surfaceTextureProps = useTexture({
+        map: "./textures/surface/Surface_Imperfection_001_basecolor.jpg",
+        normalMap: "./textures/surface/Surface_Imperfection_001_normal.jpg",
+        roughnessMap: "./textures/surface/Surface_Imperfection_001_roughness.jpg",
+        aoMap: "./textures/surface/Surface_Imperfection_001_ambientOcclusion.jpg",
+    });
+
+    const abstractTextureProps = useTexture({
+        // map: "./textures/abstract/Abstract_Organic_006_basecolor.jpg",
+        normalMap: "./textures/abstract/Abstract_Organic_006_normal.jpg",
+        roughnessMap: "./textures/abstract/Abstract_Organic_006_roughness.jpg",
+        aoMap: "./textures/abstract/Abstract_Organic_006_ambientOcclusion.jpg",
+    });
+
+    const barkPineTextureProps = useTexture({
+        map: "./textures/bark_pine/Bark_Pine_003_BaseColor.jpg",
+        normalMap: "./textures/bark_pine/Bark_Pine_003_Normal.jpg",
+        roughnessMap: "./textures/bark_pine/Bark_Pine_003_Roughness.jpg",
+        aoMap: "./textures/bark_pine/Bark_Pine_003_AmbientOcclusion.jpg",
+    });
+    const lavaTextureProps = useTexture({
+        map: "./textures/lava/Lava_006_basecolor.jpg",
+        normalMap: "./textures/lava/Lava_006_normal.jpg",
+        roughnessMap: "./textures/lava/Lava_006_roughness.jpg",
+        aoMap: "./textures/lava/Lava_006_ambientOcclusion.jpg",
+    });
+    const woodTextureProps = useTexture({
+        map: "./textures/wood/Wood_023_basecolor.jpg",
+        normalMap: "./textures/wood/Wood_023_normal.jpg",
+        roughnessMap: "./textures/wood/Wood_023_roughness.jpg",
+        aoMap: "./textures/wood/Wood_023_ambientOcclusion.jpg",
+    });
+
+    surfaceTextureProps.normalMap.repeat.set(4, 4);
+    surfaceTextureProps.roughnessMap.repeat.set(4, 4);
+    surfaceTextureProps.aoMap.repeat.set(4, 4);
+    surfaceTextureProps.normalMap.wrapS = surfaceTextureProps.normalMap.wrapT = THREE.MirroredRepeatWrapping;
+    surfaceTextureProps.roughnessMap.wrapS = surfaceTextureProps.roughnessMap.wrapT = THREE.MirroredRepeatWrapping;
+    surfaceTextureProps.aoMap.wrapS = surfaceTextureProps.aoMap.wrapT = THREE.RepeatWrapping;
+
+    const textures = {
+        'abstract': abstractTextureProps,
+        'surface': surfaceTextureProps,
+        'wood': woodTextureProps,
+        'bark_pine': barkPineTextureProps,
+        'candy': candyTextureProps,
+        'stylized_fur': stylizedFurTextureProps,
+        'lava': lavaTextureProps
+    }
 
     return (
         <group {...props} dispose={null}>
             <group rotation={[Math.PI / 2, 0, 0]} scale={0.07}>
                 <group position={[0, 0, -27.2]} scale={1.01}>
-                    <mesh geometry={nodes.Mesh004.geometry} material={materials['Strip Part']}/>
-                    <mesh geometry={nodes.Mesh004_1.geometry} material={materials['Primary Part']}/>
-                    <mesh geometry={nodes.Mesh004_2.geometry} material={materials['Add Part M']}/>
-                    <mesh geometry={nodes.Mesh004_3.geometry} material={materials.plastic1}/>
+                    <mesh geometry={nodes.Mesh004.geometry} material={materials['Strip Part']} castShadow/>
+                    <mesh geometry={nodes.Mesh004_1.geometry} material={materials['Primary Part']} castShadow/>
+                    <mesh geometry={nodes.Mesh004_2.geometry} material={materials['Add Part M']} castShadow/>
+                    <mesh geometry={nodes.Mesh004_3.geometry} material={materials.plastic1} castShadow/>
                 </group>
             </group>
             <mesh geometry={nodes.Cake.geometry} material={materials.Cake} position={[0, 1.89, 0]}
-                  scale={[0.95, 0.92, 0.95]}>
+                  scale={[0.95, 0.92, 0.95]} visible={form===1} castShadow>
                 <meshStandardMaterial
-                    {...leatherTextureProps}
-                    color={'#c86ce5'}
+                    {...textures[material]}
+                    color={cakeColor.color}
                 />
             </mesh>
             <mesh geometry={nodes.cakeHeart.geometry} material={materials.Cake} position={[0, 1.41, 0]}
-                  rotation={[1.57, 0, 0]} scale={0.1} visible={false}/>
+                  rotation={[1.57, 0, 0]} scale={0.1} visible={form===2} castShadow>
+                <meshStandardMaterial
+                    {...textures[material]}
+                    color={cakeColor.color}
+                />
+            </mesh>
             <mesh geometry={nodes.cream.geometry} material={materials.Cream} position={[0, 1.41, 0]}
-                  rotation={[1.57, 0, 0]} scale={0.1} visible={false}/>
+                  rotation={[1.57, 0, 0]} scale={0.1} visible={form===2} castShadow/>
             <mesh geometry={nodes.chandel.geometry} material={materials.chandel} position={[0, 2.33, 0]}
                   rotation={[-Math.PI / 2, 0, 0]} scale={-0.03}/>
             <group position={[0.08, 2.31, 0.42]} rotation={[Math.PI / 2, 0, -2.81]} scale={0.18}>
