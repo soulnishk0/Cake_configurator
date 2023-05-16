@@ -8,7 +8,6 @@ import {useGLTF, useTexture} from '@react-three/drei'
 import {useCustomization} from "../contexts/Customization.jsx";
 import {Color} from "three";
 import * as THREE from "three";
-import Chair from "./Chair.jsx";
 
 export function Cake(props) {
     const {nodes, materials} = useGLTF('public/models/cake.gltf')
