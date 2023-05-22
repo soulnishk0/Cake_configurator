@@ -39,7 +39,7 @@ export function Cake(props) {
     });
 
     const abstractTextureProps = useTexture({
-        map: "./textures/abstract/Abstract_Organic_006_basecolor.jpg",
+        map: "./textures/abstract/Abstract_Organic_007_basecolor.jpg",
         normalMap: "./textures/abstract/Abstract_Organic_006_normal.jpg",
         roughnessMap: "./textures/abstract/Abstract_Organic_006_roughness.jpg",
         aoMap: "./textures/abstract/Abstract_Organic_006_ambientOcclusion.jpg",
@@ -92,7 +92,7 @@ export function Cake(props) {
                     <mesh geometry={nodes.Mesh004_3.geometry} material={materials.plastic1} castShadow/>
                 </group>
             </group>
-            <mesh geometry={nodes.Cake.geometry} material={materials.Cake} position={[0, 1.89, 0]}
+            <mesh geometry={nodes.Cake.geometry}  position={[0, 1.89, 0]}
                   scale={[0.95, 0.92, 0.95]} visible={form===1} castShadow>
                 <meshStandardMaterial
                     {...textures[material]}

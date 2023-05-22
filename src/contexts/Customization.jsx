@@ -6,24 +6,20 @@ const cakeColors = [
     name: "brown",
   },
   {
-    color: "#1a5e1a",
-    name: "green",
+    color: "#70fd9d",
+    name: "mint",
   },
   {
-    color: "#659994",
+    color: "#52e7d4",
     name: "blue",
-  },
-  {
-    color: "#896599",
-    name: "mauve",
   },
   {
     color: "#ffa500",
     name: "orange",
   },
   {
-    color: "#59555b",
-    name: "grey",
+    color: "#ff0000",
+    name: "red",
   },
   {
     color: "#222222",
@@ -33,37 +29,33 @@ const cakeColors = [
     color: "#ececec",
     name: "white",
   },
+  {
+    color: "#a56bff",
+    name: "lavender",
+  },
+  {
+    color: "#896599",
+    name: "mauve",
+  },
 ];
 
 const creamColors = [
-  // {
-  //   color: "#683434",
-  //   name: "brown",
-  // },
-  // {
-  //   color: "#1a5e1a",
-  //   name: "green",
-  // },
+  {
+    color: "#3a3939",
+    name: "black",
+  },
+  {
+    color: "#4e0707",
+    name: "wine",
+  },
   {
     color: "#659994",
     name: "blue",
   },
-  // {
-  //   color: "#896599",
-  //   name: "mauve",
-  // },
   {
-    color: "#ff6a00",
+    color: "#ff9100",
     name: "orange",
   },
-  // {
-  //   color: "#59555b",
-  //   name: "grey",
-  // },
-  // {
-  //   color: "#222222",
-  //   name: "black",
-  // },
   {
     color: "#ececec",
     name: "white",
