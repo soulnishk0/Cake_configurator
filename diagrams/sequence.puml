@@ -1,0 +1,33 @@
+@startuml
+participant "main.jsx" as Main
+participant "App.jsx" as App
+participant "Cake.jsx" as Cake
+participant "Configurator.jsx" as Configurator
+participant "Experience.jsx" as Experience
+participant "Customization.jsx" as Customization
+
+Main->App: render
+activate App
+
+App->Cake: render
+activate Cake
+Cake-->App: return JSX
+deactivate Cake
+
+App->Configurator: render
+activate Configurator
+Configurator-->App: return JSX
+deactivate Configurator
+
+App->Experience: render
+activate Experience
+Experience-->App: return JSX
+deactivate Experience
+
+App->Customization: useContext
+activate Customization
+Customization-->App: return context value
+deactivate Customization
+
+deactivate App
+@enduml
