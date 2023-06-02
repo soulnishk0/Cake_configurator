@@ -113,3 +113,14 @@
 .transition {
   transition: 300ms ease;
 }
+.label {
+  font-family: "Candara";
+  text-shadow: 3px 3px #213555;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 40px;
+  color: #abc5e8;
+  z-index: 1;
+}
+
