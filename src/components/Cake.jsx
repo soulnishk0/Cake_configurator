@@ -10,7 +10,7 @@ import {Color} from "three";
 import * as THREE from "three";
 
 export function Cake(props) {
-    const {nodes, materials} = useGLTF('public/models/cake.gltf')
+    const {nodes, materials} = useGLTF('/models/cake.gltf')
     const { material, form, cakeColor, creamColor, nuts, chocolate, balls, candle } = useCustomization();
     const stand_color = new Color('#2a2424');
     nodes.Mesh004.material.color = stand_color
