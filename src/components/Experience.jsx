@@ -3,7 +3,6 @@ import {
   PresentationControls,
   Stage
 } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import {Cake} from "./Cake.jsx";
 
 const Experience = () => {
