@@ -22,6 +22,9 @@
   flex-direction: column;
   gap: 16px;
 }
+body {
+  margin: 0;
+}
 
 .configurator__section__title {
   text-transform: uppercase;
@@ -124,3 +127,24 @@
   z-index: 1;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #aaa transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
